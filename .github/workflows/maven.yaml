@@ -57,7 +57,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: mvn -B clean verify -Pci org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.projectKey=kroxylicious_kroxylicious
+        run: mvn clean install
       - name: Save PR number to file
         if: github.event_name == 'pull_request' && ${{ matrix.os }} == 'ubuntu-latest'
         run: echo ${{ github.event.number }} > PR_NUMBER.txt
