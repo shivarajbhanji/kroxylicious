@@ -95,6 +95,7 @@ public class TestVault implements Closeable {
             var execResult = vault.execInContainer(args);
             int exitCode = execResult.getExitCode();
             assertThat(exitCode).isZero();
+            System.out.println("After exec" + execResult.getStdout());
             var response = new ObjectMapper().readValue(execResult.getStdout(), valueTypeRef);
             return response.data();
         }
